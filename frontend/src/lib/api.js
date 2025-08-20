@@ -29,35 +29,35 @@ export const completeOnboarding = async (userData) => {
   return response.data;
 };
 
-export async function getUserFriends() {
+export const getUserFriends = async () => {
   const response = await axiosInstance.get("/users/friends");
   return response.data;
-}
+};
 
-export async function getRecommendedUsers() {
+export const getRecommendedUsers = async () => {
   const response = await axiosInstance.get("/users");
   return response.data;
-}
+};
 
-export async function getOutgoingFriendReqs() {
+export const getOutgoingFriendReqs = async () => {
   const response = await axiosInstance.get("/users/outgoing-friend-requests");
   return response.data;
-}
+};
 
-export async function sendFriendRequest(userId) {
+export const sendFriendRequest = async (userId) => {
   const response = await axiosInstance.post(`/users/friend-request/${userId}`);
   return response.data;
-}
+};
 
-export async function getFriendRequests() {
+export const getFriendRequests = async () => {
   const response = await axiosInstance.get("/users/friend-requests");
   return response.data;
-}
+};
 
-export async function acceptFriendRequest(requestId) {
+export const acceptFriendRequest = async (requestId) => {
   const response = await axiosInstance.put(`/users/friend-request/${requestId}/accept`);
   return response.data;
-}
+};
 
 export async function getStreamToken() {
   const response = await axiosInstance.get("/chat/token");
