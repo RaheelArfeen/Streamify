@@ -63,3 +63,8 @@ export async function getStreamToken() {
   const response = await axiosInstance.get("/chat/token");
   return response.data;
 }
+
+export const clearRecommended = async () => {
+  const response = await axiosInstance.delete("/users/clear-recommended");
+  return response.data;
+};

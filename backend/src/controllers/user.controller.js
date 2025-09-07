@@ -146,3 +146,16 @@ export async function getOutgoingFriendReqs(req, res) {
     res.status(500).json({ message: "Internal Server Error" });
   }
 }
+
+// Delete all onboarded users except yourself
+export const clearRecommendedUsers = async (req, res) => {
+  try {
+    const currentUserId = req.user.id;
+    await User.deleteMany({ _id: { $ne: currentUserId } }); // keep current user
+
+    res.status(200).json({ message: "Recommended users cleared successfully" });
+  } catch (error) {
+    console.error("Error clearing recommended users:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
