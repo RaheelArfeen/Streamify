@@ -51,10 +51,13 @@ const NotificationsPage = () => {
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-3">
                             <div className="avatar w-14 h-14 rounded-full bg-base-300">
-                              <img src={request.sender.profilePic} alt={request.sender.fullName} />
+                              <img
+                                src={request.sender?.profilePic || "/default-avatar.png"}
+                                alt={request.sender?.fullName || "Unknown User"}
+                              />
                             </div>
                             <div>
-                              <h3 className="font-semibold">{request.sender.fullName}</h3>
+                              <h3 className="font-semibold">{request.sender?.fullName || "Unknown User"}</h3>
                               <div className="flex flex-wrap gap-1.5 mt-1">
                                 <span className="badge badge-secondary badge-sm">
                                   Native: {request.sender.nativeLanguage}
@@ -96,14 +99,14 @@ const NotificationsPage = () => {
                         <div className="flex items-start gap-3">
                           <div className="avatar mt-1 size-10 rounded-full">
                             <img
-                              src={notification.recipient.profilePic}
-                              alt={notification.recipient.fullName}
+                              src={notification.recipient?.profilePic || "/default-avatar.png"}
+                              alt={notification.recipient?.fullName || "Unknown User"}
                             />
                           </div>
                           <div className="flex-1">
-                            <h3 className="font-semibold">{notification.recipient.fullName}</h3>
+                            <h3 className="font-semibold">{notification.recipient?.fullName || "Unknown User"}</h3>
                             <p className="text-sm my-1">
-                              {notification.recipient.fullName} accepted your friend request
+                              {notification.recipient?.fullName || "Someone"} accepted your friend request
                             </p>
                             <p className="text-xs flex items-center opacity-70">
                               <ClockIcon className="h-3 w-3 mr-1" />
